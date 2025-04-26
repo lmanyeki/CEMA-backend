@@ -5,7 +5,12 @@ const { PrismaClient } = require('@prisma/client');
 const app = express();
 const prisma = new PrismaClient();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://cema-frontend-phi.vercel.app/'
+  ]
+}));
 app.use(express.json());
 
 app.post('/programs', async (req, res) => {
